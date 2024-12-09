@@ -1,14 +1,23 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
+import com.google.gson.Gson
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
-    }
+
+data class Gsonclasss(
+    val id:Int=1,
+    val name:String="Leanne Grahm",
+    val username:String="Bret",
+    val eamil:String="Sincere@april.biz",
+    val phone:String="1-770-736-8031 x56442",
+    val websity:String="hildegarng.org"
+)
+
+fun main(args: Array<String>) {
+    val gsone=Gson()
+    val gsoni=Gsonclasss()
+    val gsonstr=gsone.toJson(gsoni)
+    println(gsonstr)
+
+    val gsonString = "{\"id\":1,\"name\":\"Leanne Grahm\",\"username\":\"Bret\",\"eamil\":\"Sincere@april.biz\",\"phone\":\"1-770-736-8031 x56442\",\"websity\":\"hildegarng.org\"}"
+    val user = gsone.fromJson<Gsonclasss>(gsonString, Gsonclasss::class.java)
+    println(user.name)
 }
+
